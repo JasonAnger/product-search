@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Krub", sans-serif;
+}
+
+/* body {
+  background-image: url("/images/cover.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+} */
+
+em.circle {
+  width: 45px;
+  height: 45px;
+  border: 5px solid #ef5139;
+  border-radius: 50%;
+  margin: 100px 0px -120px -35px;
+}
+
+#landing {
+  background-image: linear-gradient(0deg, #0000005e 0%, #000000bd 100%);
+}
+
+#tools .container img {
+  max-height: 40px;
+  margin: auto;
+}
+
+section {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.searchPageText {
+  font-size: 43px;
+  line-height: 44px;
+  display: block;
+  margin: auto 20px;
+  color: #4f9ef7;
+  font-weight: 600;
+}
+span#search-text {
+  font-size: 60px;
+}
+span#search-here {
+  font-size: 58px;
+  margin: -15px 0px;
+  display: inline-block;
+}
+.searchIcon {
+  display: block;
+  width: 180px;
+}
+.items-container {
+  width: 100%;
+  padding: 24px;
+  display: block;
+}
+.item-to-show {
+  display: block;
+  background: white;
+  padding: 6px 15px;
+  border-radius: 6px;
+  margin: 12px 0px;
+  box-shadow: 0px 0px 5px -2px grey;
+}
+.copied {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #000c;
+  padding: 10px 20px;
+  border-radius: 7px;
+  opacity: 0;
+  left: calc(50%);
+  transform: translateX(-50%);
+  top: -600px;
+  transition: all 0.4s ease-in-out;
+}
+.copied.active {
+  top: 30px;
+  opacity: 1;
+}
+
+.copied svg {
+  width: 30px;
+  display: inline-flex;
+}
+
+.copied span {
+  margin-left: 10px;
+  font-size: 1.1rem;
+}
+.copied span::before {
+  content: "Link has been ";
+}
+
+@media screen and (max-width: 640px) {
+  .searchPageText {
+    font-size: 23px;
+    line-height: 23px;
+  }
+  span#search-text {
+    font-size: 34px;
+  }
+  span#search-here {
+    font-size: 28px;
+    margin: -15px 0px;
+    display: inline-block;
+  }
+  .searchIcon {
+    width: 100px;
+  }
+  .copied span::before {
+    content: "";
+  }
+}
+
+.max-w-300 {
+  max-width: 240px;
+}
+
+@layer components {
+  .result-pool {
+    @apply flex w-full justify-center items-center;
+    min-height: 300px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 23px 0px;
+    box-shadow: inset 0px 0px 27px -21px grey;
+  }
+  .no-result {
+    @apply text-gray-500 font-bold;
+    font-size: 20px;
+  }
+  .nav-item {
+    @apply block mt-4 font-bold lg:inline-block lg:mt-0 mr-8 cursor-pointer;
+    color: #333;
+    font-size: 19px;
+  }
+  .nav-item:hover {
+    color: #000;
+  }
+  .nav-btn {
+    @apply inline-block text-sm px-4 py-2 font-bold leading-none rounded text-black border-2 border-black hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0;
+    font-size: 19px;
+  }
+  .stick-top .nav-btn {
+    @apply lg:text-white lg:border-white hover:border-transparent hover:text-black hover:bg-white;
+  }
+  .stick-top .nav-item {
+    @apply lg:text-white lg:hover:text-white;
+  }
+  .section-heading {
+    @apply text-3xl font-bold;
+    color: #333;
+  }
+  .text-half-section {
+    @apply w-full lg:w-1/2 px-8 flex flex-col justify-center;
+  }
+  .faq-item {
+    @apply block bg-white shadow-md text-black rounded my-5 px-4 lg:px-8 py-3 lg:py-5 cursor-pointer z-10;
+  }
+  .faq-item * {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  .faq-question {
+    @apply flex w-full;
+  }
+  .faq-item h1 {
+    @apply text-base lg:text-xl font-bold flex;
+    color: #333;
+    width: calc(100% - 30px);
+  }
+  .faq-item p {
+    @apply text-base lg:text-xl overflow-hidden block;
+    max-height: 0px;
+  }
+  .faq-item.active p {
+    @apply overflow-auto;
+    height: min-content !important;
+    max-height: 600px;
+    padding: 8px 10px 15px 0px;
+  }
+  .faq-item.active p::-webkit-scrollbar {
+    display: none;
+  }
+  .contact-label {
+    @apply block uppercase tracking-wide text-xs font-bold mb-2;
+    color: #333333;
+  }
+  .contact-field {
+    @apply appearance-none block w-full bg-gray-100 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-400;
+    color: #333333;
+  }
+  .contact-button {
+    @apply shadow focus:outline-none text-white font-bold py-2 px-6 rounded;
+    background-color: #333333;
+  }
+  .color-black {
+    color: #333333;
+  }
+  .footer-column {
+    @apply w-1/2 md:w-1/4 lg:w-1/4;
+  }
+  .footer-column-header-text {
+    @apply text-gray-500 font-bold uppercase mb-4;
+  }
+}
