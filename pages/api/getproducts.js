@@ -14,33 +14,53 @@ export default async function handler(req,res) {
 
     let byName = null
     let bySku = null
+    let byAsin = null
     if(req.query.name) {
         byName = new RegExp(`${req.query.name}`, 'g')
     }
     if(req.query.sku) {
         bySku = new RegExp(`${req.query.sku}`, 'g')
     }
+    if(req.query.asin) {
+        byAsin = new RegExp(`${req.query.asin}`, 'g')
+    }
     
     let {products} = db.data
 
     let result = products.filter((item) => {
-        if(byName && bySku) {
-            return (item.name.match(byName) && item.sku.match(bySku))
+        if(byName && bySku && byAsin) {
+            return (String(item.name).match(byName) && String(item.sku).match(bySku) && String(item.asin).match(byAsin))
+        }
+        if(bySku && byAsin) {
+            return (String(item.sku).match(bySku) && String(item.asin).match(byAsin))
+        }
+        if(byName && byAsin) {
+            return (String(item.name).match(byName) && String(item.asin).match(byAsin))
+        }
+        if(byName && bySku ) {
+            return (String(item.name).match(byName) && String(item.sku).match(bySku) )
         }
         if(byName) {
-            return item.name.match(byName)
+            return String(item.name).match(byName)
         }
         if(bySku) {
-            return item.sku.match(bySku)
+            return String(item.sku).match(bySku)
+        }
+        if(byAsin) {
+            return String(item.asin).match(byAsin)
         }
         return false
     })
+
+    let count = result.length - 3
 
     if(result.length == 0) {
         result = {products: products.slice(0,3)}
     } else {
         result = {products: result.slice(0,3)}
     }
+
+    result.count = count
 
     res.json(result)
 }

@@ -119,6 +119,9 @@ span#search-here {
   .copied span::before {
     content: "";
   }
+  .result-pool {
+    width: 96%;
+  }
 }
 
 .max-w-300 {
@@ -131,8 +134,8 @@ span#search-here {
     min-height: 300px;
     border-radius: 20px;
     background-color: white;
-    margin: 23px 0px;
-    box-shadow: inset 0px 0px 27px -21px grey;
+    margin: 23px auto;
+    /* box-shadow: inset 0px 0px 27px -21px grey; */
   }
   .no-result {
     @apply text-gray-500 font-bold;

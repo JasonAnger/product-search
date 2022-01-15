@@ -45,7 +45,7 @@ function Footer() {
         </form>
       </div>
       <div className="text-center pt-10 sm:pt-12 font-light flex items-center justify-center">
-        © 2021 Angasa Technology JSC®. All rights reserved.
+        © 2021 Opera Workspace®. All rights reserved.
       </div>
     </div>
   </footer>
